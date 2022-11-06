@@ -18,7 +18,7 @@ const CardProducto = (props) => {
       </Card.Body>
       <Card.Footer>
         <Link
-          className="btn btn-danger me-2" to={`/detalle-producto/${props._id}` }
+          className="btn btn-danger me-2" to={`/detalle-producto/${props.id}` }
         >
           Ver más
         </Link>

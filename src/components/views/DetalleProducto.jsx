@@ -5,13 +5,15 @@ import Swal from "sweetalert2";
 import { obtenerProductoApi } from "../helpers/queris";
 
 const DetalleProducto = () => {
-//   const [detalle, setDetalle] = useState([]);
-// console.log(detalle)
+  const [detalle, setDetalle] = useState([]);
+  console.log(detalle);
+
   const { id } = useParams();
-console.log(id)
+  console.log(id);
+  
   useEffect(() => {
     obtenerProductoApi(id).then((respuesta) => {
-      console.log(respuesta)
+      console.log(respuesta);
       if (respuesta.status === 201) {
         setDetalle(respuesta.dato);
       } else {

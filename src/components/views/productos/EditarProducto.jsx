@@ -77,7 +77,7 @@ console.log(respuesta)
       <hr />
    
       <Form onSubmit={handleSubmit(onSubmit)} className="my-5">
-        <Form.Group className="mb-3" controlId="formNombreProdcuto">
+        <Form.Group className="mb-3" controlId="formNombreReceta">
           <Form.Label>Nombre producto*</Form.Label>
           <Form.Control
             type="text"
