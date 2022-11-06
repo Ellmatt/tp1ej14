@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { consultarApi } from "../helpers/queris";
-import ItemProducto from "./productos/ItemProducto";
+import ItemReceta from "./recetas/ItemReceta";
 import { Link } from "react-router-dom";
 
 const Admin = () => {
-  const [productos, setProductos] = useState([]);
-  console.log(productos)
+  const [receta, setRecetas] = useState([]);
+
   useEffect(() => {
-    
     consultarApi().then((respuesta) => {
-     
-      setProductos(respuesta);
+      setRecetas(respuesta);
     });
   }, []);
   return (
     <section className="container mainSection">
       <div className="d-flex justify-content-between align-items-center mt-5">
-        <h1 className="display-4 ">Productos disponibles</h1>
+        <h1 className="display-4 ">Recetas disponibles</h1>
         <Link className="btn btn-primary" to="/administrar/crear">
           Agregar
         </Link>
@@ -27,21 +25,21 @@ const Admin = () => {
         <thead>
           <tr>
             <th>Cod</th>
-            <th>Producto</th>
+            <th>Receta</th>
             <th>Precio</th>
             <th>URL de Imagen</th>
             <th>Categoria</th>
-            <th >Descripcion</th>
+            <th>Descripcion</th>
             <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
-          {productos.map((producto, id) => (
-            <ItemProducto
+          {receta.map((receta, id) => (
+            <ItemReceta
               key={id}
-              producto={producto}
-              setProductos={setProductos}
-            ></ItemProducto>
+              receta={receta}
+              setRecetas={setRecetas}
+            ></ItemReceta>
           ))}
         </tbody>
       </Table>

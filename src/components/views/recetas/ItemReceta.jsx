@@ -1,14 +1,13 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { borrarProductoAPI, consultarApi } from "../../helpers/queris";
+import { borrarRecetaAPI, consultarApi } from "../../helpers/queris";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
-const ItemProducto = (props) => {
-  const borrarProducto = () => {
+const ItemReceta = (props) => {
+  const borrarReceta = () => {
     Swal.fire({
-      title: "Esta seguro de eliminar este producto?",
+      title: "Esta seguro de eliminar este receta?",
       text: "No se puede revertir este paso!",
       icon: "warning",
       showCancelButton: true,
@@ -18,12 +17,12 @@ const ItemProducto = (props) => {
       cancelButtonText: "Cancelar!",
     }).then((result) => {
       if (result.isConfirmed) {
-        borrarProductoAPI(props.producto._id).then((respuesta) => {
+        borrarRecetaAPI(props.receta._id).then((respuesta) => {
           if (respuesta.status === 200) {
             consultarApi().then((respuesta) => {
-              props.setProductos(respuesta);
+              props.setRecetas(respuesta);
             });
-            Swal.fire("Borrado!", "Su producto a sido borrado!", "success");
+            Swal.fire("Borrado!", "Su receta a sido borrado!", "success");
           } else {
             Swal.fire(
               "Se produjo un error",
@@ -38,18 +37,21 @@ const ItemProducto = (props) => {
 
   return (
     <tr>
-      <td>{props.producto._id}</td>
-      <td>{props.producto.nombreReceta}</td>
-      <td>{props.producto.precio}</td>
-      <td>{props.producto.imagen}</td>
-      <td>{props.producto.categoria}</td>
-      <td>{props.producto.descripcion}</td>
+      <td>{props.receta._id}</td>
+      <td>{props.receta.nombreReceta}</td>
+      <td>{props.receta.precio}</td>
+      <td>{props.receta.imagen}</td>
+      <td>{props.receta.categoria}</td>
+      <td>{props.receta.descripcion}</td>
 
       <td>
-        <Link className="btn btn-warning" to={`/administrar/editar/${props.producto._id}`}>
+        <Link
+          className="btn btn-warning"
+          to={`/administrar/editar/${props.receta._id}`}
+        >
           Editar
         </Link>
-        <Button className="btn btn-danger" onClick={borrarProducto}>
+        <Button className="btn btn-danger" onClick={borrarReceta}>
           Borrar
         </Button>
       </td>
@@ -57,4 +59,4 @@ const ItemProducto = (props) => {
   );
 };
 
-export default ItemProducto;
+export default ItemReceta;

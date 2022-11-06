@@ -1,16 +1,13 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { crearProductoAPI } from "../../helpers/queris";
+import { crearRecetaAPI } from "../../helpers/queris";
 import { useNavigate } from "react-router-dom";
-const CrearProducto = () => {
- 
-
+const CrearReceta = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-   
   } = useForm({
     defaultValues: {
       nombreReceta: "",
@@ -21,26 +18,19 @@ const CrearProducto = () => {
     },
   });
 
- 
   const navegacion = useNavigate();
 
-
   const onSubmit = (datos) => {
-   
-    crearProductoAPI(datos).then((respuesta) => {
-     
+    crearRecetaAPI(datos).then((respuesta) => {
       if (respuesta.status === 201) {
-       
         Swal.fire(
-          "Producto creado",
-          "El producto a sido creado correctamente",
+          "Receta creado",
+          "El receta a sido creado correctamente",
           "success"
         );
-      
-       
-        navegacion('/administrador')
+
+        navegacion("/administrador");
       } else {
-      
         Swal.fire("Ocurrio un error", "Vuelva a intentarlo más tarde", "error");
       }
     });
@@ -48,12 +38,12 @@ const CrearProducto = () => {
 
   return (
     <section className="container mainSection">
-      <h1 className="display-4 mt-5">Nuevo producto</h1>
+      <h1 className="display-4 mt-5">Nuevo receta</h1>
       <hr />
- 
+
       <Form onSubmit={handleSubmit(onSubmit)} className="my-5">
         <Form.Group className="mb-3" controlId="formNombreProdcuto">
-          <Form.Label>Nombre producto*</Form.Label>
+          <Form.Label>Nombre receta*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: Cafe"
@@ -70,7 +60,7 @@ const CrearProducto = () => {
             })}
           />
           <Form.Text className="text-danger">
-            {errors.nombreProducto?.message}
+            {errors.nombreReceta?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrecio">
@@ -157,4 +147,4 @@ const CrearProducto = () => {
   );
 };
 
-export default CrearProducto;
+export default CrearReceta;

@@ -1,14 +1,14 @@
 import { Container, Row } from "react-bootstrap";
-import CardProducto from "./productos/CardProducto";
+import CardProducto from "./recetas/CardReceta";
 import { consultarApi } from "../helpers/queris";
 import { useEffect, useState } from "react";
 
 const Inicio = () => {
-  const [producto, setProducto] = useState([]);
-  console.log(producto);
+  const [receta, setReceta] = useState([]);
+
   useEffect(() => {
     consultarApi().then((respuesta) => {
-      setProducto(respuesta);
+      setReceta(respuesta);
     });
   }, []);
 
@@ -18,7 +18,7 @@ const Inicio = () => {
       <hr />
       <Row xs={1} md={4} className="g-4">
         {/* aqui van las columnas */}
-        {producto.map((receta, id) => (
+        {receta.map((receta, id) => (
           <CardProducto
             key={id}
             nombreReceta={receta.nombreReceta}

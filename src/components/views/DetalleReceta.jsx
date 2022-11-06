@@ -2,18 +2,15 @@ import { Badge, Card, Col, Row, Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { obtenerProductoApi } from "../helpers/queris";
+import { obtenerRecetaApi } from "../helpers/queris";
 
-const DetalleProducto = () => {
+const DetalleReceta = () => {
   const [detalle, setDetalle] = useState([]);
-  console.log(detalle);
 
   const { id } = useParams();
-  console.log(id);
-  
+
   useEffect(() => {
-    obtenerProductoApi(id).then((respuesta) => {
-      console.log(respuesta);
+    obtenerRecetaApi(id).then((respuesta) => {
       if (respuesta.status === 201) {
         setDetalle(respuesta.dato);
       } else {
@@ -33,7 +30,7 @@ const DetalleProducto = () => {
           <Image src={detalle.imagen} alt="brownie" className="w-100" />
         </Col>
         <Col md={6} className="py-3">
-          <Card.Title>{detalle.nombreProducto}</Card.Title>
+          <Card.Title>{detalle.nombreReceta}</Card.Title>
           <hr />
           <Badge bg="success">{detalle.categoria}</Badge>
           <Card.Text className="mt-3">
@@ -46,4 +43,4 @@ const DetalleProducto = () => {
   );
 };
 
-export default DetalleProducto;
+export default DetalleReceta;

@@ -3,26 +3,19 @@ import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { editarProductoApi, obtenerProductoApi } from "../../helpers/queris";
+import { editarRecetaApi, obtenerRecetaApi } from "../../helpers/queris";
 
-const EditarProducto = () => {
- 
+const EditarReceta = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    obtenerProductoApi(id).then((respuesta) => {
-    
-console.log(respuesta)
+    obtenerRecetaApi(id).then((respuesta) => {
       if (respuesta.status === 201) {
-    
-
         setValue("nombreReceta", respuesta.dato.nombreReceta);
         setValue("precio", respuesta.dato.precio);
         setValue("imagen", respuesta.dato.imagen);
         setValue("categoria", respuesta.dato.categoria);
-        setValue("descripcion", respuesta.dato.descripcion)
-
-        
+        setValue("descripcion", respuesta.dato.descripcion);
       } else {
         Swal.fire(
           "ocurrio un error",
@@ -40,27 +33,25 @@ console.log(respuesta)
     setValue,
   } = useForm({
     defaultValues: {
-      nombreProducto: "",
+      nombreReceta: "",
       precio: "",
       imagen: "",
       categoria: "",
-      descripcion:"",
+      descripcion: "",
     },
   });
 
   const navegacion = useNavigate();
 
-  const onSubmit = (producto) => {
-  
-    
-    editarProductoApi(id, producto).then((respuesta) => {
+  const onSubmit = (receta) => {
+    editarRecetaApi(id, receta).then((respuesta) => {
       if (respuesta.status === 200) {
         Swal.fire(
-          "Producto actualizado",
-          "El producto fue actualizado correctamente",
+          "Receta actualizado",
+          "La receta fue actualizada correctamente",
           "success"
         );
-        
+
         navegacion("/administrador");
       } else {
         Swal.fire(
@@ -73,12 +64,12 @@ console.log(respuesta)
   };
   return (
     <section className="container mainSection ">
-      <h1 className="display-4 mt-5">Editar producto</h1>
+      <h1 className="display-4 mt-5">Editar receta</h1>
       <hr />
-   
+
       <Form onSubmit={handleSubmit(onSubmit)} className="my-5">
         <Form.Group className="mb-3" controlId="formNombreReceta">
-          <Form.Label>Nombre producto*</Form.Label>
+          <Form.Label>Nombre receta*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: Cafe"
@@ -95,7 +86,7 @@ console.log(respuesta)
             })}
           />
           <Form.Text className="text-danger">
-            {errors.nombreProducto?.message}
+            {errors.nombreReceta?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrecio">
@@ -182,4 +173,4 @@ console.log(respuesta)
   );
 };
 
-export default EditarProducto;
+export default EditarReceta;

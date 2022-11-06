@@ -1,0 +1,39 @@
+{
+  "usuarios": [
+    {
+      "email": "cuentaparacuentas345@gmail.com",
+      "password": "Peoito123?",
+      "id": 5
+    },
+    {
+      "email": "mahumada486@gmail.com",
+      "password": "Peoito123",
+      "id": 6
+    },
+    {
+      "email": "matiaselkpo69@hotmail.com",
+      "password": "Peoito123?",
+      "id": 7
+    },
+    {
+      "email": "pagosptcmatias@gmail.com",
+      "password": "Peoito123?",
+      "id": 8
+    },
+    {
+      "email": "matiaselkpo69@hotmail.com",
+      "password": "Peoito123?",
+      "id": 9
+    },
+    {
+      "email": "cuentaparacuentas345@gmail.com",
+      "password": "Pepita123?",
+      "id": 10
+    },
+    {
+      "email": "cuentaparacuentas.345@gmail.com",
+      "password": "Pepita123?",
+      "id": 11
+    }
+  ]
+}
