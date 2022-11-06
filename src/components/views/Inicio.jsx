@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const Inicio = () => {
   const [producto, setProducto] = useState([]);
-
+  console.log(producto);
   useEffect(() => {
     consultarApi().then((respuesta) => {
       setProducto(respuesta);
@@ -18,14 +18,14 @@ const Inicio = () => {
       <hr />
       <Row xs={1} md={4} className="g-4">
         {/* aqui van las columnas */}
-        {producto.map((objeto, id) => (
+        {producto.map((receta, id) => (
           <CardProducto
             key={id}
-            nombreProducto={objeto.nombreProducto}
-            precio={objeto.precio}
-            imagen={objeto.imagen}
-            categoria={objeto.categoria}
-            id={objeto.id}
+            nombreReceta={receta.nombreReceta}
+            precio={receta.precio}
+            imagen={receta.imagen}
+            categoria={receta.categoria}
+            id={receta._id}
           ></CardProducto>
         ))}
       </Row>

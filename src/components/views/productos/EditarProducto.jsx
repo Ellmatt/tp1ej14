@@ -11,13 +11,16 @@ const EditarProducto = () => {
 
   useEffect(() => {
     obtenerProductoApi(id).then((respuesta) => {
-      if (respuesta.status === 200) {
-       
-        setValue("nombreProducto", respuesta.dato.nombreProducto);
+    
+console.log(respuesta)
+      if (respuesta.status === 201) {
+    
+
+        setValue("nombreReceta", respuesta.dato.nombreReceta);
         setValue("precio", respuesta.dato.precio);
         setValue("imagen", respuesta.dato.imagen);
         setValue("categoria", respuesta.dato.categoria);
-        setValue('descripcion', respuesta.dato.descripcion)
+        setValue("descripcion", respuesta.dato.descripcion)
 
         
       } else {
@@ -79,7 +82,7 @@ const EditarProducto = () => {
           <Form.Control
             type="text"
             placeholder="Ej: Cafe"
-            {...register("nombreProducto", {
+            {...register("nombreReceta", {
               required: "Este dato es obligatorio",
               minLength: {
                 value: 2,

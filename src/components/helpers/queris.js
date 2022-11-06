@@ -1,4 +1,4 @@
- const URL = 'http://localhost:3003/productos'
+ const URL = 'http://localhost:4000/apiReceta/recetas'
 
 
  export const consultarApi = async () => {
@@ -7,7 +7,7 @@
       const respuesta = await fetch(URL);
       
       const listaProductos = await respuesta.json();
-      console.log(respuesta);
+      // console.log(respuesta);
       return listaProductos;
     } catch (error) {
       console.log(error);

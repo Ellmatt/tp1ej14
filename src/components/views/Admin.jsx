@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Admin = () => {
   const [productos, setProductos] = useState([]);
+  console.log(productos)
   useEffect(() => {
     
     consultarApi().then((respuesta) => {
@@ -35,9 +36,9 @@ const Admin = () => {
           </tr>
         </thead>
         <tbody>
-          {productos.map((producto) => (
+          {productos.map((producto, id) => (
             <ItemProducto
-              key={producto.id}
+              key={id}
               producto={producto}
               setProductos={setProductos}
             ></ItemProducto>

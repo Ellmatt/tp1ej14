@@ -13,7 +13,7 @@ const CrearProducto = () => {
    
   } = useForm({
     defaultValues: {
-      nombreProducto: "",
+      nombreReceta: "",
       precio: "",
       imagen: "",
       categoria: "",
@@ -57,7 +57,7 @@ const CrearProducto = () => {
           <Form.Control
             type="text"
             placeholder="Ej: Cafe"
-            {...register("nombreProducto", {
+            {...register("nombreReceta", {
               required: "Este dato es obligatorio",
               minLength: {
                 value: 2,
